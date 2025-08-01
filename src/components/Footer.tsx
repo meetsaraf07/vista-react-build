@@ -1,60 +1,33 @@
-import { Github, Twitter, Linkedin, Mail } from "lucide-react";
-
 const Footer = () => {
   const footerLinks = {
-    Product: ['Features', 'Pricing', 'API', 'Documentation'],
-    Company: ['About', 'Blog', 'Careers', 'Contact'],
-    Resources: ['Help Center', 'Tutorials', 'Community', 'Status'],
-    Legal: ['Privacy', 'Terms', 'Security', 'Compliance']
+    "About us": ["Team", "Careers", "Contact"],
+    "Services": ["Tally Integration", "ERP Solutions", "Automation"],
+    "Use Cases": ["Manufacturing", "Retail", "Services"],
+    "Pricing": ["Plans", "Enterprise", "Support"]
   };
 
-  const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Mail, href: '#', label: 'Email' }
-  ];
-
   return (
-    <footer className="border-t border-border/20 bg-background/50 backdrop-blur-md">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
-          {/* Brand section */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">V</span>
-              </div>
-              <span className="text-xl font-bold text-foreground">Vista</span>
-            </div>
-            <p className="text-muted-foreground mb-6 max-w-md">
-              Building the future of development with cutting-edge tools and technologies.
-            </p>
-            <div className="flex gap-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="w-10 h-10 bg-background/50 border border-border/50 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300 hover:bg-primary/10"
-                >
-                  <social.icon className="w-4 h-4" />
-                </a>
-              ))}
+    <footer className="bg-foreground text-background py-12">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+          <div className="md:col-span-1">
+            <div className="text-2xl font-bold mb-4">AUTO-FIN</div>
+            <div className="space-y-1 text-sm text-background/70">
+              <p>Automating Tally Solutions</p>
+              <p>For Better Business</p>
+              <p>Phone: +91-XXXXXXXXX</p>
+              <p>Address: Your Business Address</p>
+              <p>Email: contact@autofin.com</p>
             </div>
           </div>
-
-          {/* Links sections */}
+          
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h3 className="font-semibold text-foreground mb-4">{category}</h3>
-              <ul className="space-y-3">
-                {links.map((link, index) => (
-                  <li key={index}>
-                    <a
-                      href="#"
-                      className="text-muted-foreground hover:text-foreground transition-colors duration-200"
-                    >
+              <h4 className="font-semibold mb-4 text-background">{category}</h4>
+              <ul className="space-y-2">
+                {links.map((link) => (
+                  <li key={link}>
+                    <a href="#" className="text-background/70 hover:text-background transition-colors text-sm">
                       {link}
                     </a>
                   </li>
@@ -63,22 +36,15 @@ const Footer = () => {
             </div>
           ))}
         </div>
-
-        {/* Bottom section */}
-        <div className="border-t border-border/20 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-sm">
-            © 2024 Vista. All rights reserved.
+        
+        <div className="border-t border-background/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-background/70 text-sm">
+            © 2024 AUTO-FIN. All rights reserved. | Privacy Policy
           </p>
-          <div className="flex gap-6 text-sm">
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-              Terms of Service
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-              Cookie Policy
-            </a>
+          <div className="flex space-x-4 mt-4 md:mt-0">
+            <div className="w-8 h-8 bg-background/20 rounded-full"></div>
+            <div className="w-8 h-8 bg-background/20 rounded-full"></div>
+            <div className="w-8 h-8 bg-background/20 rounded-full"></div>
           </div>
         </div>
       </div>
