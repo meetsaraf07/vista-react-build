@@ -1,28 +1,84 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import TestimonialCard from "./TestimonialCard";
 
 const TestimonialsSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
   const testimonials = [
     {
-      quote: "We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.",
+      quote: "We have been working with AutoFin for the past year and have seen a significant increase in Tally automation efficiency and cost reduction. The team is professional, responsive, and truly cares about the success of our business. We highly recommend AutoFin to any company looking to streamline their ERP processes.",
       author: "John Smith",
-      position: "Marketing Director",
-      company: "XYZ Corp"
+      position: "Finance Director",
+      company: "Tech Solutions Ltd"
     },
     {
-      quote: "We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business.",
+      quote: "AutoFin's Tally automation has transformed our accounting processes. The seamless integration and automated reporting have saved us countless hours while improving accuracy across all our financial operations.",
       author: "Jane Doe",
       position: "CEO",
-      company: "ABC Inc"
+      company: "Manufacturing Corp"
     },
     {
-      quote: "Outstanding support and seamless implementation. The results speak for themselves - our ROI has improved dramatically since partnering with this amazing team.",
+      quote: "Outstanding support and seamless implementation. The results speak for themselves - our processing time has reduced by 80% since partnering with AutoFin for our ERP automation needs.",
       author: "Mike Johnson",
       position: "Operations Manager", 
-      company: "Global Tech"
+      company: "Global Enterprises"
+    },
+    {
+      quote: "The automated Tally integration provided by AutoFin has revolutionized our financial workflow. Real-time data sync and automated reconciliation have eliminated manual errors completely.",
+      author: "Sarah Williams",
+      position: "CFO",
+      company: "Retail Plus"
+    },
+    {
+      quote: "AutoFin's ERP portal integration has streamlined our entire business process. From inventory management to financial reporting, everything is now automated and efficient.",
+      author: "David Brown",
+      position: "IT Director",
+      company: "Service Industries"
     }
   ];
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+      }, 4000);
+      return () => clearInterval(interval);
+    }
+  }, [isMobile, testimonials.length]);
+
+  const nextTestimonial = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const getVisibleTestimonials = () => {
+    if (isMobile) {
+      return [testimonials[currentIndex]];
+    }
+    // Show 3 testimonials on desktop
+    const visible = [];
+    for (let i = 0; i < 3; i++) {
+      visible.push(testimonials[(currentIndex + i) % testimonials.length]);
+    }
+    return visible;
+  };
 
   return (
     <section className="py-20 px-6">
@@ -38,39 +94,44 @@ const TestimonialsSection = () => {
 
         <Card className="bg-foreground border-0 rounded-3xl animate-slide-up">
           <CardContent className="p-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-background">
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="space-y-6 animate-fade-in" style={{animationDelay: `${index * 0.2}s`}}>
-                  <p className="text-background/90 leading-relaxed text-sm">
-                    "{testimonial.quote}"
-                  </p>
-                  <div className="space-y-1">
-                    <p className="font-semibold text-background">
-                      {testimonial.author}
-                    </p>
-                    <p className="text-sm text-background/70">
-                      {testimonial.position}
-                    </p>
-                    <p className="text-sm text-background/70">
-                      {testimonial.company}
-                    </p>
-                  </div>
-                </div>
+            <div className={`${isMobile ? 'flex' : 'grid grid-cols-3'} gap-12 text-background overflow-hidden`}>
+              {getVisibleTestimonials().map((testimonial, index) => (
+                <TestimonialCard
+                  key={`${currentIndex}-${index}`}
+                  quote={testimonial.quote}
+                  author={testimonial.author}
+                  position={testimonial.position}
+                  company={testimonial.company}
+                />
               ))}
             </div>
             
             <div className="flex items-center justify-between mt-12">
               <div className="flex space-x-2">
-                <div className="w-3 h-3 bg-background rounded-full"></div>
-                <div className="w-3 h-3 bg-background/30 rounded-full"></div>
-                <div className="w-3 h-3 bg-background/30 rounded-full"></div>
-                <div className="w-3 h-3 bg-background/30 rounded-full"></div>
+                {testimonials.map((_, index) => (
+                  <div 
+                    key={index} 
+                    className={`w-3 h-3 rounded-full transition-colors ${
+                      index === currentIndex ? 'bg-background' : 'bg-background/30'
+                    }`}
+                  />
+                ))}
               </div>
               <div className="flex space-x-3">
-                <Button variant="ghost" size="sm" className="text-background hover:bg-background/10 w-10 h-10 rounded-full p-0">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="text-background hover:bg-background/10 w-10 h-10 rounded-full p-0"
+                  onClick={prevTestimonial}
+                >
                   <ChevronLeft className="h-5 w-5" />
                 </Button>
-                <Button variant="ghost" size="sm" className="text-background hover:bg-background/10 w-10 h-10 rounded-full p-0">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="text-background hover:bg-background/10 w-10 h-10 rounded-full p-0"
+                  onClick={nextTestimonial}
+                >
                   <ChevronRight className="h-5 w-5" />
                 </Button>
               </div>
