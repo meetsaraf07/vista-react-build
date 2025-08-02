@@ -2,30 +2,29 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section className="pt-24 pb-16 px-4">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              AUTOMATE YOUR TALLY WITH{" "}
-              <span className="text-primary">AUTO-FIN</span>
+    <section className="pt-32 pb-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8 animate-slide-up">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[0.9] tracking-tight">
+              HERO TEXT THAT{" "}
+              <span className="gradient-text">ATTRACT TO THE</span>{" "}
+              USER
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Transform your business with our comprehensive ERP automation solution. 
-              Streamline your Tally operations and boost productivity with intelligent automation.
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
+              Something that describes your hero text and what the business has to the user to entice.
             </p>
             <Button 
-              size="lg" 
-              className="bg-foreground hover:bg-foreground/90 text-background px-8 py-6 text-lg"
+              className="bg-foreground hover:bg-foreground/90 text-background px-8 py-4 text-sm font-medium rounded-lg hover-lift animate-bounce-in"
             >
               Book a consultation
             </Button>
           </div>
-          <div className="flex justify-center">
-            <div className="w-full max-w-md h-64 bg-muted rounded-lg border border-border flex items-center justify-center">
+          <div className="flex justify-center lg:justify-end animate-fade-in">
+            <div className="w-full max-w-lg h-80 bg-muted rounded-3xl border border-border flex items-center justify-center animate-float">
               <div className="text-muted-foreground text-center">
-                <div className="w-16 h-16 bg-muted-foreground/20 rounded-lg mx-auto mb-4"></div>
-                <p>Dashboard Preview</p>
+                <div className="w-20 h-20 bg-muted-foreground/20 rounded-2xl mx-auto mb-4"></div>
+                <p className="text-sm">Placeholder Image</p>
               </div>
             </div>
           </div>

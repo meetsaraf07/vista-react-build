@@ -4,56 +4,56 @@
 
 @layer base {
   :root {
-    /* AutoFin Brand Colors */
-    --primary: 142 76% 36%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 142 76% 50%;
+    /* AutoFin Brand Colors - matching Figma */
+    --primary: 91 100% 50%;
+    --primary-foreground: 220 13% 18%;
+    --primary-glow: 91 100% 60%;
     
     --secondary: 220 14% 96%;
-    --secondary-foreground: 220 9% 46%;
+    --secondary-foreground: 220 13% 18%;
     
-    --accent: 142 76% 36%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 91 100% 50%;
+    --accent-foreground: 220 13% 18%;
     
     --background: 0 0% 100%;
-    --foreground: 220 9% 46%;
+    --foreground: 220 13% 18%;
     
     --muted: 220 14% 96%;
     --muted-foreground: 220 9% 46%;
     
     --card: 0 0% 100%;
-    --card-foreground: 220 9% 46%;
+    --card-foreground: 220 13% 18%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 220 9% 46%;
+    --popover-foreground: 220 13% 18%;
     
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 142 76% 36%;
+    --ring: 91 100% 50%;
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 220 9% 46%;
-    --sidebar-primary: 220 9% 46%;
+    --sidebar-foreground: 220 13% 18%;
+    --sidebar-primary: 220 13% 18%;
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 220 14% 96%;
-    --sidebar-accent-foreground: 220 9% 46%;
+    --sidebar-accent-foreground: 220 13% 18%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 142 76% 36%;
+    --sidebar-ring: 91 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
 
     /* AutoFin gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 50%));
-    --gradient-hero: linear-gradient(135deg, hsl(220 9% 46%) 0%, hsl(142 76% 36%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(91 100% 50%), hsl(91 100% 60%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(220 14% 96%) 100%);
     --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(220 14% 96%) 100%);
 
     /* Professional shadows */
-    --shadow-elegant: 0 10px 30px -10px hsl(220 9% 46% / 0.15);
-    --shadow-glow: 0 0 40px hsl(142 76% 36% / 0.2);
-    --shadow-card: 0 4px 20px -2px hsl(220 9% 46% / 0.08);
+    --shadow-elegant: 0 25px 50px -12px hsl(0 0% 0% / 0.25);
+    --shadow-glow: 0 0 40px hsl(91 100% 50% / 0.3);
+    --shadow-card: 0 10px 25px -5px hsl(0 0% 0% / 0.1), 0 20px 40px -7px hsl(0 0% 0% / 0.1);
 
     /* Smooth transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -106,5 +106,91 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Custom animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  .animate-bounce-in {
+    animation: bounceIn 0.8s ease-out forwards;
+  }
+
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(91 100% 45%), hsl(91 100% 35%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }

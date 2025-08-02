@@ -10,26 +10,28 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto px-4 py-4">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm">
+      <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-8">
-            <div className="text-2xl font-bold text-foreground">
+          <div className="flex items-center space-x-12">
+            <div className="text-2xl font-bold text-foreground tracking-tight">
               AUTO-FIN
             </div>
-            <nav className="hidden md:flex items-center space-x-6">
+            <nav className="hidden lg:flex items-center space-x-8">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors duration-200"
                 >
                   {item.name}
                 </a>
               ))}
             </nav>
           </div>
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
+          <Button 
+            className="bg-foreground hover:bg-foreground/90 text-background px-6 py-2 text-sm font-medium rounded-lg transition-all duration-200 hover-lift"
+          >
             Request a quote
           </Button>
         </div>

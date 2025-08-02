@@ -5,43 +5,43 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const TestimonialsSection = () => {
   const testimonials = [
     {
-      quote: "AUTO-FIN transformed our accounting processes completely. The Tally integration saved us hours of manual work every day.",
-      author: "Sarah Johnson",
-      position: "Finance Director",
-      company: "TechCorp Solutions"
+      quote: "We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.",
+      author: "John Smith",
+      position: "Marketing Director",
+      company: "XYZ Corp"
     },
     {
-      quote: "The automated reporting feature is a game-changer. We now have real-time insights into our financial data without any manual intervention.",
-      author: "Michael Chen",
-      position: "CFO",
-      company: "Innovation Ltd"
+      quote: "We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business.",
+      author: "Jane Doe",
+      position: "CEO",
+      company: "ABC Inc"
     },
     {
-      quote: "Outstanding support and seamless implementation. AUTO-FIN made our ERP integration smooth and efficient.",
-      author: "Emma Rodriguez",
+      quote: "Outstanding support and seamless implementation. The results speak for themselves - our ROI has improved dramatically since partnering with this amazing team.",
+      author: "Mike Johnson",
       position: "Operations Manager", 
-      company: "Global Enterprises"
+      company: "Global Tech"
     }
   ];
 
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-4">
-        <div className="mb-8">
-          <div className="inline-block bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm font-medium mb-4">
+    <section className="py-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-12">
+          <div className="inline-block bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium mb-6">
             Testimonials
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-            Hear what our amazing customers say about AUTO-FIN's automation solutions
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground max-w-2xl">
+            Hear what our amazing customers say about us
           </h2>
         </div>
 
-        <Card className="bg-foreground border-0">
-          <CardContent className="p-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-background">
+        <Card className="bg-foreground border-0 rounded-3xl animate-slide-up">
+          <CardContent className="p-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-background">
               {testimonials.map((testimonial, index) => (
-                <div key={index} className="space-y-4">
-                  <p className="text-background/90 leading-relaxed">
+                <div key={index} className="space-y-6 animate-fade-in" style={{animationDelay: `${index * 0.2}s`}}>
+                  <p className="text-background/90 leading-relaxed text-sm">
                     "{testimonial.quote}"
                   </p>
                   <div className="space-y-1">
@@ -59,19 +59,19 @@ const TestimonialsSection = () => {
               ))}
             </div>
             
-            <div className="flex items-center justify-between mt-8">
+            <div className="flex items-center justify-between mt-12">
               <div className="flex space-x-2">
-                <div className="w-2 h-2 bg-background rounded-full"></div>
-                <div className="w-2 h-2 bg-background/50 rounded-full"></div>
-                <div className="w-2 h-2 bg-background/50 rounded-full"></div>
-                <div className="w-2 h-2 bg-background/50 rounded-full"></div>
+                <div className="w-3 h-3 bg-background rounded-full"></div>
+                <div className="w-3 h-3 bg-background/30 rounded-full"></div>
+                <div className="w-3 h-3 bg-background/30 rounded-full"></div>
+                <div className="w-3 h-3 bg-background/30 rounded-full"></div>
               </div>
-              <div className="flex space-x-2">
-                <Button variant="ghost" size="sm" className="text-background hover:bg-background/10">
-                  <ChevronLeft className="h-4 w-4" />
+              <div className="flex space-x-3">
+                <Button variant="ghost" size="sm" className="text-background hover:bg-background/10 w-10 h-10 rounded-full p-0">
+                  <ChevronLeft className="h-5 w-5" />
                 </Button>
-                <Button variant="ghost" size="sm" className="text-background hover:bg-background/10">
-                  <ChevronRight className="h-4 w-4" />
+                <Button variant="ghost" size="sm" className="text-background hover:bg-background/10 w-10 h-10 rounded-full p-0">
+                  <ChevronRight className="h-5 w-5" />
                 </Button>
               </div>
             </div>
