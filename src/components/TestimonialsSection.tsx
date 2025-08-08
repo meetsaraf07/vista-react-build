@@ -52,13 +52,11 @@ const TestimonialsSection = () => {
   }, []);
 
   useEffect(() => {
-    if (isMobile) {
-      const interval = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-      }, 4000);
-      return () => clearInterval(interval);
-    }
-  }, [isMobile, testimonials.length]);
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -81,7 +79,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-20 px-6">
+    <section id="testimonials" className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
           <div className="inline-block bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium mb-6">
@@ -94,7 +92,7 @@ const TestimonialsSection = () => {
 
         <Card className="bg-foreground border-0 rounded-3xl animate-slide-up">
           <CardContent className="p-12">
-            <div className={`${isMobile ? 'flex' : 'grid grid-cols-3'} gap-12 text-background overflow-hidden`}>
+            <div className={`${isMobile ? 'flex' : 'grid grid-cols-3'} gap-12 text-background`}>
               {getVisibleTestimonials().map((testimonial, index) => (
                 <TestimonialCard
                   key={`${currentIndex}-${index}`}

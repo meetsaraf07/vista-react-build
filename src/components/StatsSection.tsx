@@ -1,13 +1,13 @@
 const StatsSection = () => {
   const stats = [
-    { icon: "👥", number: "2,245,341", label: "" },
-    { icon: "🎯", number: "46,328", label: "" },
-    { icon: "📊", number: "828,867", label: "" },
-    { icon: "📈", number: "1,926,436", label: "" }
+    { number: "2,245,341", label: "Website visitors" },
+    { number: "46,328", label: "Qualified leads generated" },
+    { number: "828,867", label: "Automated invoices processed" },
+    { number: "1,926,436", label: "Successful reconciliations" }
   ];
 
   return (
-    <section className="py-20 px-6">
+    <section id="stats" className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 max-w-lg mx-auto leading-tight">
@@ -22,15 +22,12 @@ const StatsSection = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
           {stats.map((stat, index) => (
             <div key={index} className="text-center animate-scale-in" style={{animationDelay: `${index * 0.2}s`}}>
-              <div className="text-2xl mb-3">{stat.icon}</div>
               <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2">
                 {stat.number}
               </div>
-              {stat.label && (
-                <div className="text-muted-foreground text-sm">
-                  {stat.label}
-                </div>
-              )}
+              <div className="text-muted-foreground text-sm">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>

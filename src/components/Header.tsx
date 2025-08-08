@@ -2,11 +2,11 @@ import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const navItems = [
-    { name: "About us", href: "#about" },
+    { name: "About us", href: "#stats" },
     { name: "Contact", href: "#contact" },
     { name: "Use Cases", href: "#services" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "Blog", href: "#blog" },
+    { name: "Pricing", href: "#contact" },
+    { name: "Blog", href: "#footer" },
   ];
 
   return (
@@ -28,9 +28,10 @@ const Header = () => {
               ))}
           </nav>
           <Button 
+            asChild
             className="bg-foreground hover:bg-foreground/90 text-background px-6 py-2 text-sm font-medium rounded-lg transition-all duration-200 hover-lift"
           >
-            Request a quote
+            <a href="#contact">Request a quote</a>
           </Button>
         </div>
       </div>

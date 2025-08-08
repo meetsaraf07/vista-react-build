@@ -56,7 +56,7 @@ const ServicesGrid = () => {
   ];
 
   return (
-    <section className="py-20 px-6">
+    <section id="services" className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
           <div className="inline-block bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium mb-6">
@@ -82,12 +82,15 @@ const ServicesGrid = () => {
                         {service.description}
                       </p>
                       <Button 
+                        asChild
                         variant="ghost" 
                         size="sm" 
                         className={`${service.textColor} hover:bg-white/10 p-0 h-auto font-normal text-sm flex items-center gap-2`}
                       >
-                        <span>Learn more</span>
-                        <span>→</span>
+                        <a href="#contact">
+                          <span>Learn more</span>
+                          <span>→</span>
+                        </a>
                       </Button>
                     </div>
                     <div className="ml-4">
