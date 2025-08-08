@@ -3,12 +3,13 @@ interface TestimonialCardProps {
   author: string;
   position: string;
   company: string;
+  isActive?: boolean;
 }
 
-const TestimonialCard = ({ quote, author, position, company }: TestimonialCardProps) => {
+const TestimonialCard = ({ quote, author, position, company, isActive = false }: TestimonialCardProps) => {
   return (
     <article className="min-w-0 flex-shrink-0 animate-fade-in">
-      <div className="relative rounded-3xl border border-background/30 p-6 md:p-8">
+      <div className={`relative rounded-3xl border border-background/30 p-6 md:p-8 h-48 md:h-60 ${isActive ? 'overflow-visible' : 'overflow-hidden opacity-80'}`}>
         <p className="text-background/90 leading-relaxed text-sm md:text-base break-words">“{quote}”</p>
         <div aria-hidden className="absolute left-10 -bottom-2 w-4 h-4 bg-foreground border border-background/30 rotate-45 rounded-[2px]" />
       </div>

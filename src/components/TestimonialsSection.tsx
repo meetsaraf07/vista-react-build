@@ -92,7 +92,7 @@ const TestimonialsSection = () => {
 
         <Card className="bg-foreground border-0 rounded-3xl animate-slide-up">
           <CardContent className="p-12">
-            <div className={`${isMobile ? 'flex' : 'grid grid-cols-3'} gap-12 text-background`}>
+            <div className={`${isMobile ? 'flex' : 'grid grid-cols-3'} gap-12 text-background overflow-hidden`}>
               {getVisibleTestimonials().map((testimonial, index) => (
                 <TestimonialCard
                   key={`${currentIndex}-${index}`}
@@ -100,6 +100,7 @@ const TestimonialsSection = () => {
                   author={testimonial.author}
                   position={testimonial.position}
                   company={testimonial.company}
+                  isActive={isMobile ? true : index === 1}
                 />
               ))}
             </div>
